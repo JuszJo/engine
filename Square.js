@@ -5,12 +5,6 @@ class Square {
         this.position_x = position_x;
         this.position_y = position_y;
         this.speed = 5;
-
-        
-    }
-
-    setSize() {
-        
     }
 
     draw() {
@@ -20,6 +14,6 @@ class Square {
     update() {
         this.draw();
 
-        Movement.initMovement.apply(this)
+        Movement.initMovement.apply(this, [false])
     }
 }
