@@ -13,12 +13,16 @@ image.src = './images/bonus1_full.png';
 
 const sprite = new Sprite(image);
 
+const square = new Square(100, 100);
+
 function clearScreen() {
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function draw() {
     sprite.draw();
+
+    square.draw();
 }
 
 function update() {
