@@ -11,7 +11,7 @@ const image = new Image();
 
 image.src = './images/bonus1_full.png';
 
-const sprite = new Sprite(image);
+const sprite = new Sprite(image, 0, 0, false, 4, 2, 12, 8, 2);
 
 // const square = new Square(100, 100);
 
