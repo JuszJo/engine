@@ -22,7 +22,7 @@ function clearScreen() {
 function draw() {
     sprite.draw();
 
-    square.draw();
+    square.update();
 }
 
 function update() {
