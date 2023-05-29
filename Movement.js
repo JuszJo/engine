@@ -65,6 +65,15 @@ addEventListener('keyup', onKeyUp);
 
 class Movement {
     static initMovement() {
+        if(controls.up) {
+            // this.position_x += this.speed;
+        }
+        if(controls.down) {
+            // this.position_x += this.speed;
+        }
+        if(controls.left) {
+            this.position_x -= this.speed;
+        }
         if(controls.right) {
             this.position_x += this.speed;
         }
