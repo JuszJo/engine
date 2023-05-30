@@ -130,7 +130,6 @@ class Movement {
                 break;
 
             case false:
-                // console.log(this);
                 if(controlsWASD.up) {
                     this.position_y -= this.speed;
                 }
