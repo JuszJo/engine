@@ -13,7 +13,12 @@ const drawingSurface = canvas.getContext('2d');
 
 // const sprite = new Sprite(image, 0, 0, false, 4, 2, 12, 8, 2);
 
+const entity = new Entity();
+
 const square = new Square(100, 100);
+
+// console.log(square.event)
+
 
 function clearScreen() {
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
