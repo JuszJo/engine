@@ -1,7 +1,5 @@
 class Square {
     constructor(width, height, arrow = false, position_x = 0, position_y = 0) {
-        this.event = new CustomEvent("entity_creation", {detail: this});
-        dispatchEvent(this.event);
         this.width = width;
         this.height = height;
         this.position_x = position_x;
@@ -9,7 +7,8 @@ class Square {
         this.speed = 5;
         this.arrow = arrow;
         this.MovementComponent = new Movement();
-        this.CollisionComponent = new Collision();
+        this.event = new CustomEvent("entity_creation", {detail: this});
+        dispatchEvent(this.event);
     }
 
     static createSquare() {
@@ -17,11 +16,7 @@ class Square {
     }
 
     applyMovement() {;
-        this.MovementComponent.initMovement.apply(this)
-    }
-
-    checkCollision() {
-
+        this.MovementComponent.initMovement.apply(this);
     }
 
     draw() {
