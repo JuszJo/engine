@@ -5,6 +5,12 @@ class Square {
         this.position_x = position_x;
         this.position_y = position_y;
         this.speed = 5;
+        this.arrow = false;
+        this.MovementComponent = new Movement();
+    }
+
+    applyMovement() {
+        this.MovementComponent.initMovement.apply(this)
     }
 
     draw() {
@@ -14,6 +20,6 @@ class Square {
     update() {
         this.draw();
 
-        Movement.initMovement.apply(this, [false])
+        this.applyMovement();
     }
 }

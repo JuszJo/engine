@@ -7,22 +7,22 @@ const canvasHeight = 576;
 // define drawing surface
 const drawingSurface = canvas.getContext('2d');
 
-const image = new Image();
+// const image = new Image();
 
-image.src = './images/bonus1_full.png';
+// image.src = './images/bonus1_full.png';
 
-const sprite = new Sprite(image, 0, 0, false, 4, 2, 12, 8, 2);
+// const sprite = new Sprite(image, 0, 0, false, 4, 2, 12, 8, 2);
 
-// const square = new Square(100, 100);
+const square = new Square(100, 100);
 
 function clearScreen() {
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function draw() {
-    sprite.update();
+    // sprite.update();
 
-    // square.update();
+    square.update();
 }
 
 function update() {

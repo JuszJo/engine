@@ -111,8 +111,8 @@ addEventListener('keydown', onKeyDown);
 addEventListener('keyup', onKeyUp);
 
 class Movement {
-    static initMovement(arrow = true) {
-        switch (arrow) {
+    initMovement() {
+        switch (this.arrow) {
             case true:
                 if(controls.up) {
                     this.position_y -= this.speed;
