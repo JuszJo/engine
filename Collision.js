@@ -9,7 +9,14 @@ class Collision {
 
     static borderCollision(entity) {
         if(entity.position_x < 0) {
-            console.log("Left");
+            console.log("Left Collision");
+            
+            entity.position_x = 0;
+        }
+        if(entity.position_x + entity.width > canvasWidth) {
+            console.log("Right Collision");
+            
+            entity.position_x = canvasWidth - entity.width;
         }
     }
 
