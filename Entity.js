@@ -6,4 +6,8 @@ class Entity {
             console.log(this.array);
         })
     }
+
+    updateAllEntities() {
+        this.array.forEach(entity => entity.update())
+    }
 }
