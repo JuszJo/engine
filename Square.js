@@ -15,6 +15,14 @@ class Square {
         new Square(100, 100, true, Math.floor(Math.random() * 500), Math.floor(Math.random() * 500));
     }
 
+    randomMovement() {
+        const random_x = Math.floor(Math.random() * this.speed + 1);
+        const random_y = Math.floor(Math.random() * this.speed + 1);
+
+        this.position_x += random_x;
+        this.position_y += random_y;
+    }
+
     applyMovement() {;
         this.MovementComponent.initMovement.apply(this);
     }
@@ -27,5 +35,7 @@ class Square {
         this.draw();
 
         this.applyMovement();
+
+        // this.randomMovement();
     }
 }
