@@ -11,10 +11,14 @@ class Collision {
         if(entity.position_x < 0) {
             console.log("Left Collision");
             entity.position_x = 0;
+
+            entity.speed *= -1
         }
         if(entity.position_x + entity.width > canvasWidth) {
             console.log("Right Collision");
             entity.position_x = canvasWidth - entity.width;
+
+            entity.speed *= -1
         }
         if(entity.position_y < 0) {
             console.log("Top Collision");

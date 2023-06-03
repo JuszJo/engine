@@ -16,11 +16,14 @@ class Square {
     }
 
     randomMovement() {
-        const random_x = Math.floor(Math.random() * this.speed + 1);
+        /* const random_x = Math.floor(Math.random() * this.speed + 1);
         const random_y = Math.floor(Math.random() * this.speed + 1);
 
         this.position_x += random_x;
-        this.position_y += random_y;
+        this.position_y += random_y; */
+
+        this.position_x += this.speed;
+        this.position_y += this.speed;
     }
 
     applyMovement() {;
@@ -36,6 +39,6 @@ class Square {
 
         this.applyMovement();
 
-        // this.randomMovement();
+        this.randomMovement();
     }
 }
