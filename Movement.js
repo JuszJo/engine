@@ -114,7 +114,7 @@ class Movement {
     initMovement() {
         switch (this.arrow) {
             case true:
-                if(controls.up) {
+                /* if(controls.up) {
                     this.position_y -= this.speed;
                 }
                 if(controls.down) {
@@ -125,24 +125,19 @@ class Movement {
                 }
                 if(controls.right) {
                     this.position_x += this.speed;
-                }
+                } */
 
                 break;
 
             case false:
-                if(controlsWASD.up) {
-                    this.position_y -= this.speed;
-                }
-                if(controlsWASD.down) {
-                    this.position_y += this.speed;
-                }
-                if(controlsWASD.left) {
-                    this.position_x -= this.speed;
-                }
-                if(controlsWASD.right) {
-                    this.position_x += this.speed;
-                }
-
+                if(controlsWASD.up) this.speed.y = -5;
+                else if(controlsWASD.down) this.speed.y = 5;
+                else this.speed.y = 0
+                
+                if(controlsWASD.left) this.speed.x = -5;
+                else if(controlsWASD.right) this.speed.x = 5;
+                else this.speed.x = 0
+                
                 break;
         
             default:
