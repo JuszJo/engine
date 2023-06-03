@@ -5,6 +5,8 @@ class Entity {
 
         addEventListener('entity_creation', event => {
             this.array.push(event.detail);
+
+            // event.detail.randomMovement();
             
             // console.log(this.array);
         })

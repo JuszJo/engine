@@ -7,6 +7,7 @@ class Square {
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
+        this.allowMovement = false;
         this.event = new CustomEvent("entity_creation", {detail: this});
         dispatchEvent(this.event);
     }
@@ -16,14 +17,19 @@ class Square {
     }
 
     randomMovement() {
-        /* const random_x = Math.floor(Math.random() * this.speed + 1);
-        const random_y = Math.floor(Math.random() * this.speed + 1);
+        // const random_x = Math.floor(Math.random() * this.speed + 1);
+        // const random_y = Math.floor(Math.random() * this.speed + 1);
+        
+        // this.position_x += random_x;
+        // this.position_y += random_y;
 
-        this.position_x += random_x;
-        this.position_y += random_y; */
+        // this.position_x += this.speed;
+        // this.position_y += this.speed;
+        
+        const random_x = Math.random();
+        const random_y = Math.random();
 
-        /* this.position_x += this.speed;
-        this.position_y += this.speed; */
+        this.acceleration.add(new Vector(random_x, random_y));
     }
 
     applyMovement() {
@@ -45,6 +51,6 @@ class Square {
 
         this.applyMovement();
 
-        this.randomMovement();
+        // this.randomMovement();
     }
 }

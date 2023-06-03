@@ -112,36 +112,38 @@ addEventListener('keyup', onKeyUp);
 
 class Movement {
     initMovement() {
-        switch (this.arrow) {
-            case true:
-                /* if(controls.up) {
-                    this.position_y -= this.speed;
-                }
-                if(controls.down) {
-                    this.position_y += this.speed;
-                }
-                if(controls.left) {
-                    this.position_x -= this.speed;
-                }
-                if(controls.right) {
-                    this.position_x += this.speed;
-                } */
-
-                break;
-
-            case false:
-                if(controlsWASD.up) this.acceleration.y = -0.5;
-                else if(controlsWASD.down) this.acceleration.y = 0.5;
-                else this.acceleration.y = 0
-                
-                if(controlsWASD.left) this.acceleration.x = -0.5;
-                else if(controlsWASD.right) this.acceleration.x = 0.5;
-                else this.acceleration.x = 0
-                
-                break;
-        
-            default:
-                break;
+        if(this.allowMovement) {
+            switch (this.arrow) {
+                case true:
+                    /* if(controls.up) {
+                        this.position_y -= this.speed;
+                    }
+                    if(controls.down) {
+                        this.position_y += this.speed;
+                    }
+                    if(controls.left) {
+                        this.position_x -= this.speed;
+                    }
+                    if(controls.right) {
+                        this.position_x += this.speed;
+                    } */
+    
+                    break;
+    
+                case false:
+                    if(controlsWASD.up) this.acceleration.y = -0.5;
+                    else if(controlsWASD.down) this.acceleration.y = 0.5;
+                    else this.acceleration.y = 0
+                    
+                    if(controlsWASD.left) this.acceleration.x = -0.5;
+                    else if(controlsWASD.right) this.acceleration.x = 0.5;
+                    else this.acceleration.x = 0
+                    
+                    break;
+            
+                default:
+                    break;
+            }
         }
         
     }
