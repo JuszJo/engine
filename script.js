@@ -26,7 +26,7 @@ addEventListener('mousemove', e => {
 
 const entity = new Entity();
 
-const square = new Square(100, 100);
+const square = new Square(100, 30);
 
 function clearScreen() {
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);

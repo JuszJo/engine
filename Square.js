@@ -2,13 +2,16 @@ class Square {
     constructor(width, height, arrow = false, position_x = 0, position_y = 0) {
         this.width = width;
         this.height = height;
-        this.position = new Vector(position_x, position_y);
+        this.position = new Vector(canvasWidth / 2, canvasHeight / 2);
         this.speed = new Vector(0, 0);
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
+        this.angle = 0;
         // this.allowMovement = true;
         this.allowMovement = false;
+        this.coord = new Vector(canvasWidth / 2, canvasHeight / 2);
+        this.mouseVector = new Vector(mouseX, mouseY);
         this.event = new CustomEvent("entity_creation", {detail: this});
         dispatchEvent(this.event);
     }
@@ -37,8 +40,6 @@ class Square {
         this.MovementComponent.initMovement.apply(this);
 
         this.speed.add(this.acceleration);
-
-        // console.log(this.speed.x, this.speed.y);
         
         this.speed.limit(5, 5);
 
@@ -46,32 +47,72 @@ class Square {
     }
 
     followMouse() {
-        let newPos = this.position.makeCopy();
+        this.mouseVector.x = Math.min(Math.max(mouseX, 0), canvasWidth);
+        this.mouseVector.y = Math.min(Math.max(mouseY, 0), canvasHeight);
 
-        newPos.x = newPos.x + 50;
-        newPos.y = newPos.y + 50;
+        const newVector = new Vector().subStatic(this.mouseVector, this.position);
 
-        let dir = new Vector().subStatic(new Vector(mouseX, mouseY), newPos);
+        newVector.normalize();
 
-        // console.log(dir);
-
-        dir.normalize()
-
-        dir.mult(0.1)
-
-        this.acceleration.add(dir)
-
-        // console.log(dir);
+        const angleBetween = Math.atan2(newVector.y, newVector.x);
+        
+        this.angle = angleBetween;
+        
+        this.acceleration.add(newVector);
     }
 
+    // direction() {
+    //     this.mouseVector.x = Math.min(Math.max(mouseX, 0), canvasWidth);
+    //     this.mouseVector.y = Math.min(Math.max(mouseY, 0), canvasHeight);
+
+    //     let newPos = this.position.makeCopy();
+
+    //     newPos.x = newPos.x + canvasWidth / 2;
+    //     newPos.y = newPos.y + canvasHeight / 2;
+
+    //     const newVector = new Vector().subStatic(this.mouseVector, newPos);
+
+    //     newVector.normalize();
+
+    //     const angleBetween = Math.atan2(newVector.y, newVector.x);
+
+    //     console.log(angleBetween * 180 / Math.PI);
+
+    //     this.angle = angleBetween;
+        
+    // }
+
     draw() {
-        drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+        // this.angle += 0.001;
+        drawingSurface.save();
+
+        // drawingSurface.translate(-canvasWidth / 2, -canvasHeight / 2);
+        // drawingSurface.translate(-canvasWidth / 2 - this.width / 2, -canvasHeight / 2 - this.height / 2);
+
+        drawingSurface.translate(this.position.x, this.position.y);
+        
+        drawingSurface.rotate(this.angle)
+        drawingSurface.strokeRect(0, 0, 100, 0.5);
+
+        // console.log(this.position);
+        
+        drawingSurface.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
+        // drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+        // drawingSurface.fillRect(0 - this.width / 2, 0 - this.height / 2, this.width, this.height);
+        // drawingSurface.fillRect((canvasWidth / 2 - this.width) - (this.position.x - this.width / 2), (canvasHeight / 2 - this.height) - (this.position.y - this.height / 2), this.width, this.height);
+
+        // drawingSurface.strokeRect(0, 0, canvasWidth, canvasHeight);
+
+
+        drawingSurface.restore();
     }
 
     update() {
+        // this.direction();
+        
         this.draw();
 
-        // this.followMouse();
+        this.followMouse();
         
         // this.randomMovement();
 
