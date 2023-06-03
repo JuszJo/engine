@@ -26,8 +26,8 @@ class Square {
         // this.position_x += this.speed;
         // this.position_y += this.speed;
         
-        const random_x = Math.random();
-        const random_y = Math.random();
+        const random_x = Math.random() * (1 - -1) + -1;
+        const random_y = Math.random() * (1 - -1) + -1;
 
         this.acceleration.add(new Vector(random_x, random_y));
     }
@@ -36,6 +36,8 @@ class Square {
         this.MovementComponent.initMovement.apply(this);
 
         this.speed.add(this.acceleration);
+
+        // console.log(this.speed.x, this.speed.y);
         
         this.speed.limit(5, 5);
 
@@ -48,9 +50,12 @@ class Square {
 
     update() {
         this.draw();
+        
+        this.randomMovement();
 
         this.applyMovement();
-
-        // this.randomMovement();
+        
+        
+        this.acceleration.mult(0);
     }
 }
