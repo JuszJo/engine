@@ -14,7 +14,15 @@ const drawingSurface = canvas.getContext('2d');
 
 // const sprite = new Sprite(image, 0, 0, false, 4, 2, 12, 8, 2);
 
+let mouseX = null;
+let mouseY = null;
+
 addSquareButton.addEventListener('click', Square.createSquare)
+
+addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+})
 
 const entity = new Entity();
 

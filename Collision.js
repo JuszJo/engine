@@ -3,7 +3,7 @@ class Collision {
         const entitiesToTrack = entity.getAllEntities();
 
         entitiesToTrack.forEach(entity => {
-            this.borderCollision(entity)
+            // this.borderCollision(entity)
         })
     }
 

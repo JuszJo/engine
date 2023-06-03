@@ -7,6 +7,7 @@ class Square {
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
+        // this.allowMovement = true;
         this.allowMovement = false;
         this.event = new CustomEvent("entity_creation", {detail: this});
         dispatchEvent(this.event);
@@ -44,17 +45,37 @@ class Square {
         this.position.add(this.speed);
     }
 
+    followMouse() {
+        let newPos = this.position.makeCopy();
+
+        newPos.x = newPos.x + 50;
+        newPos.y = newPos.y + 50;
+
+        let dir = new Vector().subStatic(new Vector(mouseX, mouseY), newPos);
+
+        // console.log(dir);
+
+        dir.normalize()
+
+        dir.mult(0.1)
+
+        this.acceleration.add(dir)
+
+        // console.log(dir);
+    }
+
     draw() {
         drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
     update() {
         this.draw();
+
+        // this.followMouse();
         
-        this.randomMovement();
+        // this.randomMovement();
 
         this.applyMovement();
-        
         
         this.acceleration.mult(0);
     }
