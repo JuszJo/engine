@@ -7,6 +7,12 @@ class Vector {
     add(vector) {
         this.x += vector.x;
         this.y += vector.y;
+
+        /* if(this.x >= 0) this.x += vector.x;
+        else if(this.x < 0) this.x -= vector.x;
+
+        if(this.y >= 0) this.y += vector.y;
+        else if(this.y < 0) this.y -= vector.y; */
     };
 
     addStatic(vector1, vector2) {

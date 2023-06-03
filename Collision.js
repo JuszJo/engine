@@ -8,25 +8,40 @@ class Collision {
     }
 
     static borderCollision(entity) {
-        if(entity.position_x < 0) {
+        if(entity.position.x < 0) {
             console.log("Left Collision");
-            entity.position_x = 0;
+            entity.position.x = 0;
 
-            entity.speed *= -1
+            entity.speed.x *= -1;
+
+            entity.acceleration.x *= -1;
         }
-        if(entity.position_x + entity.width > canvasWidth) {
+
+        if(entity.position.x + entity.width > canvasWidth) {
             console.log("Right Collision");
-            entity.position_x = canvasWidth - entity.width;
+            entity.position.x = canvasWidth - entity.width;
+            
+            entity.speed.x *= -1;
 
-            entity.speed *= -1
+            entity.acceleration.x *= -1;
         }
-        if(entity.position_y < 0) {
+
+        if(entity.position.y < 0) {
             console.log("Top Collision");
-            entity.position_y = 0;
+            entity.position.y = 0;
+
+            entity.speed.y *= -1;
+
+            entity.acceleration.y *= -1;
         }
-        if(entity.position_y + entity.height > canvasHeight) {
+        
+        if(entity.position.y + entity.height > canvasHeight) {
             console.log("Bottom Collision");
-            entity.position_y = canvasHeight - entity.height;
+            entity.position.y = canvasHeight - entity.height;
+            
+            entity.speed.y *= -1;
+
+            entity.acceleration.y *= -1;
         }
     }
 
