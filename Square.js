@@ -46,19 +46,37 @@ class Square {
         this.position.add(this.speed);
     }
 
+    connectPoints(x1, y1, x2, y2) {
+        drawingSurface.beginPath();
+        drawingSurface.moveTo(x2, y2);
+        drawingSurface.lineTo(x1, y1);
+        drawingSurface.stroke();
+    }
+
     followMouse() {
         this.mouseVector.x = Math.min(Math.max(mouseX, 0), canvasWidth);
         this.mouseVector.y = Math.min(Math.max(mouseY, 0), canvasHeight);
 
-        const newVector = new Vector().subStatic(this.mouseVector, this.position);
-
-        newVector.normalize();
-
-        const angleBetween = Math.atan2(newVector.y, newVector.x);
+        drawingSurface.beginPath();
+        drawingSurface.arc(this.mouseVector.x, this.mouseVector.y, 5, 0, Math.PI * 2, false);
+        drawingSurface.fill();
+        drawingSurface.closePath();
         
+        const newPosition = this.position.makeCopy();
+
+        this.connectPoints(this.mouseVector.x, this.mouseVector.y, newPosition.x, newPosition.y);
+
+        this.mouseVector.sub(newPosition);
+        
+        this.mouseVector.normalize();
+        
+        this.mouseVector.mult(2);
+        
+        const angleBetween = Math.atan2(this.mouseVector.y, this.mouseVector.x);
+
         this.angle = angleBetween;
         
-        this.acceleration.add(newVector);
+        this.acceleration.add(this.mouseVector);
     }
 
     // direction() {
@@ -83,41 +101,30 @@ class Square {
     // }
 
     draw() {
-        // this.angle += 0.001;
         drawingSurface.save();
-
-        // drawingSurface.translate(-canvasWidth / 2, -canvasHeight / 2);
-        // drawingSurface.translate(-canvasWidth / 2 - this.width / 2, -canvasHeight / 2 - this.height / 2);
 
         drawingSurface.translate(this.position.x, this.position.y);
         
-        drawingSurface.rotate(this.angle)
-        drawingSurface.strokeRect(0, 0, 100, 0.5);
+        drawingSurface.rotate(this.angle);
 
-        // console.log(this.position);
+        // drawingSurface.strokeRect(0, 0, 100, 0.5);
         
         drawingSurface.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
-        // drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
-        // drawingSurface.fillRect(0 - this.width / 2, 0 - this.height / 2, this.width, this.height);
-        // drawingSurface.fillRect((canvasWidth / 2 - this.width) - (this.position.x - this.width / 2), (canvasHeight / 2 - this.height) - (this.position.y - this.height / 2), this.width, this.height);
-
-        // drawingSurface.strokeRect(0, 0, canvasWidth, canvasHeight);
-
-
+        
         drawingSurface.restore();
     }
 
     update() {
-        // this.direction();
-        
-        this.draw();
-
         this.followMouse();
-        
-        // this.randomMovement();
 
         this.applyMovement();
         
         this.acceleration.mult(0);
+
+        this.speed.mult(0);
+
+        this.draw();
+        
+        // this.randomMovement();
     }
 }
