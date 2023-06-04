@@ -46,6 +46,10 @@ class Square {
         this.position.add(this.speed);
     }
 
+    applyForce(force) {
+        this.acceleration.add(force)
+    }
+
     connectPoints(x1, y1, x2, y2) {
         drawingSurface.beginPath();
         drawingSurface.moveTo(x2, y2);
@@ -76,7 +80,7 @@ class Square {
 
         this.angle = angleBetween;
         
-        this.acceleration.add(this.mouseVector);
+        this.applyForce(this.mouseVector);
     }
 
     // direction() {
