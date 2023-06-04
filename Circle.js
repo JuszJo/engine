@@ -1,17 +1,14 @@
-class Square {
-    constructor(width, height, arrow = false, position_x = 0, position_y = 0) {
-        this.width = width;
-        this.height = height;
-        this.position = new Vector(canvasWidth / 2, canvasHeight / 2);
+class Circle {
+    constructor(radius, arrow = false, position_x = 0, position_y = 0) {
+        this.radius = radius;
+        this.position = new Vector(position_x, position_y);
         this.speed = new Vector(0, 0);
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
         this.angle = 0;
-        // this.allowMovement = true;
-        this.allowMovement = false;
-        this.coord = new Vector(canvasWidth / 2, canvasHeight / 2);
-        this.mouseVector = new Vector(mouseX, mouseY);
+        this.allowMovement = true;
+        // this.allowMovement = false;
         this.event = new CustomEvent("entity_creation", {detail: this});
         dispatchEvent(this.event);
     }
@@ -39,9 +36,11 @@ class Square {
     applyMovement() {
         this.MovementComponent.initMovement.apply(this);
 
+        this.acceleration.mult(20);
+
         this.speed.add(this.acceleration);
         
-        this.speed.limit(5, 5);
+        this.speed.limit(20, 20);
 
         this.position.add(this.speed);
     }
@@ -127,23 +126,13 @@ class Square {
     // }
 
     draw() {
-        drawingSurface.save();
-
-        drawingSurface.translate(this.position.x, this.position.y);
-        
-        drawingSurface.rotate(this.angle);
-
-        // drawingSurface.strokeRect(0, 0, 100, 0.5);
-        
-        drawingSurface.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
-        
-        drawingSurface.restore();
+        drawingSurface.beginPath();
+        drawingSurface.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2, false);
+        drawingSurface.fill();
+        drawingSurface.closePath();
     }
 
     update() {
-        // this.followMouse();
-        // this.followObject()
-
         this.applyMovement();
         
         this.acceleration.mult(0);
@@ -151,7 +140,5 @@ class Square {
         this.speed.mult(0);
 
         this.draw();
-        
-        // this.randomMovement();
     }
 }
