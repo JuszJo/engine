@@ -35,7 +35,7 @@ function clearScreen() {
 }
 
 function draw() {
-    square.followObject(circle)
+//     square.followObject(circle)
 
     entity.updateAllEntities();
 }
