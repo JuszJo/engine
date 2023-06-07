@@ -89,7 +89,7 @@ class Circle {
 
         this.connectPoints(entity.position.x, entity.position.y, newPosition.x, newPosition.y);
 
-        const newObject = entity.position.makeCopy()
+        const newObject = entity.position.makeCopy();
 
         newObject.sub(newPosition);
         

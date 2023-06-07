@@ -28,14 +28,14 @@ const entity = new Entity();
 
 const square = new Square(100, 30);
 
-const circle = new Circle(20, false, 100, 100)
+const circle = new Circle(10, false, 100, 100)
 
 function clearScreen() {
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function draw() {
-//     square.followObject(circle)
+    square.followObject(circle)
 
     entity.updateAllEntities();
 }
