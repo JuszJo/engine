@@ -141,7 +141,7 @@ class Square {
     }
 
     update() {
-        // this.followMouse();
+        this.followMouse();
         // this.followObject()
 
         this.applyMovement();
