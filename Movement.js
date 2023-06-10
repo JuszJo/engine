@@ -115,18 +115,14 @@ class Movement {
         if(this.allowMovement) {
             switch (this.arrow) {
                 case true:
-                    /* if(controls.up) {
-                        this.position_y -= this.speed;
-                    }
-                    if(controls.down) {
-                        this.position_y += this.speed;
-                    }
-                    if(controls.left) {
-                        this.position_x -= this.speed;
-                    }
-                    if(controls.right) {
-                        this.position_x += this.speed;
-                    } */
+                    // console.log(this.acceleration);
+                    if(controls.up) this.acceleration.y = -0.5;
+                    else if(controls.down) this.acceleration.y = 0.5;
+                    else this.acceleration.y = 0
+                    
+                    if(controls.left) this.acceleration.x = -0.5;
+                    else if(controls.right) this.acceleration.x = 0.5;
+                    else this.acceleration.x = 0
     
                     break;
     

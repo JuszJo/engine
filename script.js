@@ -14,6 +14,24 @@ const drawingSurface = canvas.getContext('2d');
 
 // const sprite = new Sprite(image, 0, 0, false, 4, 2, 12, 8, 2);
 
+const policeImage = new Image();
+
+policeImage.src = './images/Police.png';
+
+let police = null;
+let police2 = null;
+let police3 = null;
+
+policeImage.onload = () => {
+    police = new Sprite(policeImage, 400, 300, true, 1, 1, 1, 1, 1, 0.5);
+
+    // police2 = new Sprite(policeImage, 200, 100, true, 1, 1, 1, 1, 1, 0.5);
+
+    // police3 = new Sprite(policeImage, 100, 500, true, 1, 1, 1, 1, 1, 0.5);
+
+    update();
+}
+
 let mouseX = null;
 let mouseY = null;
 
@@ -35,7 +53,19 @@ function clearScreen() {
 }
 
 function draw() {
-    square.followObject(circle)
+    police.followObject(circle);
+
+    // police2.followObject(circle);
+
+    // police3.followObject(circle);
+
+    police.update();
+
+    // police2.update();
+
+    // police3.update();
+
+    // square.followObject(circle);
 
     entity.updateAllEntities();
 }
@@ -48,4 +78,4 @@ function update() {
     requestAnimationFrame(update);
 }
 
-update();
+// update();
