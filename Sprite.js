@@ -1,16 +1,17 @@
-class Sprite {
-    constructor(image, position_x = 0, position_y =  0, oneCharacterSheet = true, totalCharactersX, totalCharactersY, totalFramesX, totalFramesY, characterNumber, scale = 1) {
+class Sprite extends Entity {
+    constructor(image, width, height, position_x = 0, position_y =  0, oneCharacterSheet = true, totalCharactersX, totalCharactersY, totalFramesX, totalFramesY, characterNumber, scale = 1) {
+        super(width, height, position_x, position_y, true)
         // sprite image
         this.image = image;
 
         // full sprite dimensions
-        this.width = image.width;
-        this.height = image.height;
+        this.width = width;
+        this.height = height;
 
         this.scale = scale;
 
-        // sprite position on canvas
-        this.position = new Vector(position_x, position_y);
+        // // sprite position on canvas
+        // this.position = new Vector(position_x, position_y);
 
         // speed
         this.speed = 5;
@@ -45,54 +46,12 @@ class Sprite {
         
         this.speed = new Vector(0, 0);
         this.acceleration = new Vector(0, 0)
-        this.angle = 0;
         this.degrees = 90;
-        this.allowMovement = true;
+        this.allowMovement = false;
         this.arrow = true;
         this.MovementComponent = new Movement();
-    }
-
-    connectPoints(x1, y1, x2, y2) {
-        drawingSurface.beginPath();
-        drawingSurface.moveTo(x2, y2);
-        drawingSurface.lineTo(x1, y1);
-        drawingSurface.stroke();
-    }
-
-    applyForce(force) {
-        this.acceleration.add(force);
-    }
-
-    followObject(entity) {    
-        const newPosition = this.position.makeCopy();
-
-        this.connectPoints(entity.position.x, entity.position.y, newPosition.x, newPosition.y);
-
-        const newObject = entity.position.makeCopy()
-
-        newObject.sub(newPosition);
-        
-        newObject.normalize();
-        
-        newObject.mult(2);
-        
-        const angleBetween = Math.atan2(newObject.y, newObject.x);
-
-        // console.log(angleBetween);
-
-        this.angle = angleBetween;
-        
-        this.applyForce(newObject);
-    }
-
-    applyMovement() {
-        this.speed.add(this.acceleration);
-        
-        this.speed.limit(5, 5);
-
-        this.position.add(this.speed);
-
-        this.MovementComponent.initMovement.apply(this);
+        this.event = new CustomEvent("entity_creation", {detail: this});
+        dispatchEvent(this.event);
     }
 
     draw() {
@@ -108,9 +67,8 @@ class Sprite {
             this.image,
             this.sourceX, this.sourceY,
             this.sourceWidth, this.sourceHeight,
-            -(this.width / 2) * this.scale, -this.height / 2 * this.scale,
-            // -this.position.x / 2, -this.position.y / 2,
-            this.sourceWidth * this.scale, this.sourceHeight * this.scale,
+            (-this.width / 2) * this.scale, (-this.height / 2) * this.scale,
+            this.width * this.scale, this.height * this.scale,
         );
 
         drawingSurface.restore();
@@ -124,7 +82,5 @@ class Sprite {
         this.acceleration.mult(0);
 
         this.speed.mult(0);
-
-        // Movement.initMovement.apply(this, [false]);
     }
 }

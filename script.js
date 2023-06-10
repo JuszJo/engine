@@ -23,7 +23,7 @@ let police2 = null;
 let police3 = null;
 
 policeImage.onload = () => {
-    police = new Sprite(policeImage, 400, 300, true, 1, 1, 1, 1, 1, 0.5);
+    police = new Sprite(policeImage, policeImage.width, policeImage.height, 400, 300, true, 1, 1, 1, 1, 1, 0.5);
 
     // police2 = new Sprite(policeImage, 200, 100, true, 1, 1, 1, 1, 1, 0.5);
 
@@ -44,7 +44,7 @@ addEventListener('mousemove', e => {
 
 const entity = new Entity();
 
-const square = new Square(100, 30);
+// const square = new Square(100, 30);
 
 const circle = new Circle(10, false, 100, 100)
 
