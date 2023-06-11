@@ -1,5 +1,6 @@
 const canvas = document.querySelector('canvas');
-const addSquareButton = document.querySelector('button');
+const addSquareButton = document.querySelector('#add-square');
+const showPointsButton = document.querySelector('#show-points');
 
 // define canvas dimensions
 const canvasWidth = 1024;
@@ -45,6 +46,8 @@ addEventListener('mousemove', e => {
 })
 
 const entity = new Entity();
+
+showPointsButton.addEventListener('click', () => police.showPoints = !police.showPoints);
 
 // const square = new Square(100, 30);
 

@@ -21,6 +21,7 @@ class Entity {
         this.MovementComponent = new Movement();
         this.angle = 0;
         this.allowMovement = false;
+        this.showPoints = false;
         // this.coord = new Vector(canvasWidth / 2, canvasHeight / 2);
         this.mouseVector = new Vector(mouseX, mouseY);
     }
@@ -92,7 +93,7 @@ class Entity {
     followObject(entity) {
         const newPosition = this.position.makeCopy();
 
-        this.connectPoints(entity.position.x, entity.position.y, newPosition.x, newPosition.y);
+        this.showPoints && this.connectPoints(entity.position.x, entity.position.y, newPosition.x, newPosition.y);
 
         const newObject = entity.position.makeCopy()
 
