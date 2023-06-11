@@ -124,7 +124,7 @@ class Movement {
                     // else if(controls.right) this.acceleration.x = 0.5;
                     // else this.acceleration.x = 0
 
-                    console.log(Math.cos(this.angle), Math.sin(this.angle));
+                    // console.log(Math.cos(this.angle), Math.sin(this.angle));
                     // console.log(this.angle * 180 / Math.PI);
                     // console.log(Math.cos(this.angle), Math.sin(this.angle));
                     
