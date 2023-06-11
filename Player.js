@@ -26,8 +26,6 @@ class Player extends Sprite {
     }
 
     draw() {
-        // console.log(this.angle, this.acceleration.x, this.acceleration.y);
-
         drawingSurface.save();
 
         drawingSurface.translate(this.position.x, this.position.y);
@@ -51,8 +49,6 @@ class Player extends Sprite {
         this.applyMovement();
 
         this.draw();
-
-        // console.log(this.acceleration);
 
         this.acceleration.mult(0);
 

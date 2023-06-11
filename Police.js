@@ -28,8 +28,6 @@ class Police extends Sprite {
 
         this.draw();
 
-        // console.log(this.speed);
-
         this.acceleration.mult(0);
 
         this.speed.mult(0.9);
