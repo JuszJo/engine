@@ -15,6 +15,7 @@ class Entity {
         this.height = height;
         this.position = new Vector(position_x, position_y);
         this.speed = new Vector(0, 0);
+        this.maxSpeed = 5;
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
@@ -41,7 +42,7 @@ class Entity {
         
         this.speed.add(this.acceleration);
         
-        this.speed.limit(5, 5);
+        this.speed.limit(this.maxSpeed, this.maxSpeed);
         
         this.position.add(this.speed);
     }
@@ -94,7 +95,7 @@ class Entity {
         
         newObject.normalize();
         
-        newObject.mult(2);
+        newObject.mult(1);
         
         const angleBetween = Math.atan2(newObject.y, newObject.x);
 

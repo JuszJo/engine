@@ -14,16 +14,21 @@ const drawingSurface = canvas.getContext('2d');
 
 // const sprite = new Sprite(image, 0, 0, false, 4, 2, 12, 8, 2);
 
+const driverImage = new Image();
 const policeImage = new Image();
 
+driverImage.src = './images/Black_viper.png';
 policeImage.src = './images/Police.png';
 
+let player = null;
 let police = null;
-let police2 = null;
-let police3 = null;
 
 policeImage.onload = () => {
     police = new Sprite(policeImage, policeImage.width, policeImage.height, 400, 300, true, 1, 1, 1, 1, 1, 0.5);
+    player = new Sprite(driverImage, driverImage.width, driverImage.height, 20, 20, true, 1, 1, 1, 1, 1, 0.5);
+
+    player.allowMovement = true;
+    player.maxSpeed = 20;
 
     // police2 = new Sprite(policeImage, 200, 100, true, 1, 1, 1, 1, 1, 0.5);
 
@@ -53,21 +58,15 @@ function clearScreen() {
 }
 
 function draw() {
-    police.followObject(circle);
+    police.followObject(player);
+
+    entity.updateAllEntities();
 
     // police2.followObject(circle);
 
-    // police3.followObject(circle);
-
-    police.update();
-
-    // police2.update();
-
-    // police3.update();
 
     // square.followObject(circle);
 
-    entity.updateAllEntities();
 }
 
 function update() {
