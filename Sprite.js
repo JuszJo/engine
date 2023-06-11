@@ -14,7 +14,7 @@ class Sprite extends Entity {
         // this.position = new Vector(position_x, position_y);
 
         // speed
-        this.maxSpeed = 50;
+        // this.maxSpeed = 50;
 
         // type of spritesheet
         this.oneCharacterSheet = oneCharacterSheet;
@@ -74,15 +74,15 @@ class Sprite extends Entity {
         drawingSurface.restore();
     }
 
-    update() {
-        this.applyMovement();
+    // update() {
+    //     this.applyMovement();
 
-        this.draw();
+    //     this.draw();
 
-        console.log(this.speed);
+    //     console.log(this.speed);
 
-        this.acceleration.mult(0);
+    //     this.acceleration.mult(0);
 
-        this.speed.mult(0.9);
-    }
+    //     this.speed.mult(0.9);
+    // }
 }
