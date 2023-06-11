@@ -25,7 +25,7 @@ let police = null;
 
 policeImage.onload = () => {
     police = new Police(policeImage, policeImage.width, policeImage.height, 400, 300, true, 1, 1, 1, 1, 1, 0.5);
-    player = new Player(driverImage, driverImage.width, driverImage.height, 20, 20, true, 1, 1, 1, 1, 1, 0.5);
+    player = new Player(driverImage, driverImage.width, driverImage.height, 240, 240, true, 1, 1, 1, 1, 1, 0.5);
 
     // police2 = new Sprite(policeImage, 200, 100, true, 1, 1, 1, 1, 1, 0.5);
 

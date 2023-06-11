@@ -25,6 +25,28 @@ class Player extends Sprite {
 
     }
 
+    draw() {
+        // console.log(this.angle, this.acceleration.x, this.acceleration.y);
+
+        drawingSurface.save();
+
+        drawingSurface.translate(this.position.x, this.position.y);
+
+        const angleOffset = this.degrees * Math.PI / 180
+
+        drawingSurface.rotate(this.angle + angleOffset);
+
+        drawingSurface.drawImage(
+            this.image,
+            this.sourceX, this.sourceY,
+            this.sourceWidth, this.sourceHeight,
+            (-this.width / 2) * this.scale, (-this.height / 2) * this.scale,
+            this.width * this.scale, this.height * this.scale,
+        );
+
+        drawingSurface.restore();
+    }
+
     update() {
         this.applyMovement();
 
@@ -34,6 +56,6 @@ class Player extends Sprite {
 
         this.acceleration.mult(0);
 
-        // this.speed.mult(0.9);
+        this.speed.mult(0.9);
     }
 }

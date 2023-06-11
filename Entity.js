@@ -19,7 +19,7 @@ class Entity {
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
-        this.angle = 90 * Math.PI / 180;
+        this.angle = 0;
         this.allowMovement = false;
         // this.coord = new Vector(canvasWidth / 2, canvasHeight / 2);
         this.mouseVector = new Vector(mouseX, mouseY);
@@ -43,6 +43,11 @@ class Entity {
         this.speed.add(this.acceleration);
         
         this.speed.limit(this.maxSpeed, this.maxSpeed);
+
+        // this.speed.x = Math.floor(this.speed.x);
+        // this.speed.y = Math.floor(this.speed.y);
+
+        // console.log(this.speed);
         
         this.position.add(this.speed);
     }

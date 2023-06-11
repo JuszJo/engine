@@ -20,7 +20,7 @@ class Police extends Sprite {
             scale
         )
 
-        this.maxSpeed = 8;
+        this.maxSpeed = 7;
     }
     
     update() {
