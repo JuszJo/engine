@@ -20,9 +20,13 @@ class Player extends Sprite {
             scale
         )
 
+        this.degrees = 90;
         this.maxSpeed = 10;
         this.allowMovement = true;
+    }
 
+    boundingBox() {
+        drawingSurface.strokeRect(this.position.x - this.height * this.scale / 2, this.position.y - this.width * this.scale / 2, this.height * this.scale, this.width * this.scale);
     }
 
     draw() {
@@ -43,15 +47,17 @@ class Player extends Sprite {
         );
 
         drawingSurface.restore();
+        
+        // this.boundingBox();
     }
 
     update() {
         this.applyMovement();
-
+        
         this.draw();
-
+        
         this.acceleration.mult(0);
-
+        
         this.speed.mult(0.9);
     }
 }

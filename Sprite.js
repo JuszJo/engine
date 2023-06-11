@@ -46,7 +46,7 @@ class Sprite extends Entity {
         
         this.speed = new Vector(0, 0);
         this.acceleration = new Vector(0, 0)
-        this.degrees = 90;
+        this.degrees = 0;
         this.allowMovement = false;
         this.arrow = true;
         this.MovementComponent = new Movement();
@@ -59,9 +59,9 @@ class Sprite extends Entity {
 
         drawingSurface.translate(this.position.x, this.position.y);
 
-        const angleOffset = this.degrees * Math.PI / 180
+        // const angleOffset = this.degrees * Math.PI / 180
 
-        drawingSurface.rotate(this.angle + angleOffset + 0.03);
+        drawingSurface.rotate(this.angle);
 
         drawingSurface.drawImage(
             this.image,

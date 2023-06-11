@@ -25,8 +25,8 @@ let player = null;
 let police = null;
 
 policeImage.onload = () => {
-    police = new Police(policeImage, policeImage.width, policeImage.height, 400, 300, true, 1, 1, 1, 1, 1, 0.5);
-    player = new Player(driverImage, driverImage.width, driverImage.height, 240, 240, true, 1, 1, 1, 1, 1, 0.5);
+    police = new Police(policeImage, policeImage.width, policeImage.height, canvasWidth, canvasHeight / 2, true, 1, 1, 1, 1, 1, 0.5);
+    player = new Player(driverImage, driverImage.width, driverImage.height, 0 + driverImage.width * 0.5, canvasHeight / 2, true, 1, 1, 1, 1, 1, 0.5);
 
     // police2 = new Sprite(policeImage, 200, 100, true, 1, 1, 1, 1, 1, 0.5);
 
@@ -51,16 +51,16 @@ showPointsButton.addEventListener('click', () => police.showPoints = !police.sho
 
 // const square = new Square(100, 30);
 
-const circle = new Circle(10, false, 100, 100)
+// const circle = new Circle(10, false, 100, 100)
 
 function clearScreen() {
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function draw() {
-    police.followObject(player);
-
     entity.updateAllEntities();
+    
+    police.followObject(player);
 
     // police2.followObject(circle);
 
