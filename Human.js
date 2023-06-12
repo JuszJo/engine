@@ -7,7 +7,8 @@ class Human extends Sprite {
         totalCharactersX, totalCharactersY, 
         totalFramesX, totalFramesY, 
         characterNumber, 
-        scale = 1
+        scale = 1,
+        animations
     ) {
         super(
             image, 
@@ -17,10 +18,25 @@ class Human extends Sprite {
             totalCharactersX, totalCharactersY, 
             totalFramesX, totalFramesY, 
             characterNumber, 
-            scale
+            scale,
+            animations
         )
 
-        
+        this.allowMovement = true;
+        this.arrow = false;
+    }
+
+    
+    update() {
+        // console.log(this.speed);
+
+        this.draw();
+
+        this.applyMovement();
+
+        // this.animate();
+
+        this.acceleration.mult(0);
 
         
     }

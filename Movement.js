@@ -138,6 +138,7 @@ class Movement {
                     break;
     
                 case false:
+                    // console.log(controlsWASD);
                     if(controlsWASD.up) this.acceleration.y = -0.5;
                     else if(controlsWASD.down) this.acceleration.y = 0.5;
                     else this.acceleration.y = 0

@@ -25,6 +25,21 @@ addEventListener('mousemove', e => {
 
 const characterNumber = 8;
 
+const humanAnimations = {
+    up: {
+        totalFrames: 3,
+    },
+    down: {
+        totalFrames: 3,
+    },
+    left: {
+        totalFrames: 3,
+    },
+    right: {
+        totalFrames: 3,
+    },
+}
+
 const driverImage = new Image();
 const policeImage = new Image();
 const test = new Image();
@@ -40,7 +55,7 @@ let police = null;
 policeImage.onload = () => {
     police = new Police(policeImage, policeImage.width, policeImage.height, canvasWidth, canvasHeight / 2, true, 1, 1, 1, 1, 1, 0.5);
     player = new Player(driverImage, driverImage.width, driverImage.height, 0 + driverImage.width * 0.5, canvasHeight / 2, true, 1, 1, 1, 1, 1, 0.5);
-    tester = new Human(test, test.width, test.height, 0, 0, false, 4, 2, 12, 8, characterNumber, 1)
+    tester = new Human(test, test.width, test.height, 0, 0, false, 4, 2, 12, 8, characterNumber, 1, humanAnimations)
 
     // police2 = new Sprite(policeImage, 200, 100, true, 1, 1, 1, 1, 1, 0.5);
 

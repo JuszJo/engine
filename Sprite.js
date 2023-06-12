@@ -1,5 +1,5 @@
 class Sprite extends Entity {
-    constructor(image, width, height, position_x = 0, position_y =  0, oneCharacterSheet = true, totalCharactersX, totalCharactersY, totalFramesX, totalFramesY, characterNumber, scale = 1) {
+    constructor(image, width, height, position_x = 0, position_y =  0, oneCharacterSheet = true, totalCharactersX, totalCharactersY, totalFramesX, totalFramesY, characterNumber, scale = 1, animations) {
         super(width, height, position_x, position_y, true)
         // sprite image
         this.image = image;
@@ -42,17 +42,23 @@ class Sprite extends Entity {
         this.sourceY = this.totalCharactersY == 1 || this.characterNumber <= this.totalCharactersX ? 0 : (Math.floor((this.characterNumber - 1) / this.totalCharactersX)) * this.charactersFrameHeight;
 
         // console.log(this.sourceX, Math.floor((this.characterNumber - 1) / this.totalCharactersX));
-        console.log(this.sourceX, this.sourceY);
+        // console.log(this.sourceX, this.sourceY);
         // console.log(this.sourceX, Math.floor((this.characterNumber - 1) / this.totalCharactersX));
 
         this.sourceWidth = this.charactersFrameWidth / this.characterFramesX;
         this.sourceHeight = this.charactersFrameHeight / this.characterFramesY;
+
+        this.animations = animations || null;
         
         this.degrees = 0;
         this.allowMovement = false;
         this.arrow = true;
         this.event = new CustomEvent("entity_creation", {detail: this});
         dispatchEvent(this.event);
+    }
+
+    animate() {
+       
     }
 
     draw() {
@@ -71,9 +77,5 @@ class Sprite extends Entity {
         );
 
         drawingSurface.restore();
-    }
-
-    update() {
-        this.draw();
     }
 }
