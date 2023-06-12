@@ -9,6 +9,14 @@ const canvasHeight = 576;
 // define drawing surface
 const drawingSurface = canvas.getContext('2d');
 
+let mouseX = null;
+let mouseY = null;
+
+addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+})
+
 // const image = new Image();
 
 // image.src = './images/bonus1_full.png';
@@ -35,15 +43,7 @@ policeImage.onload = () => {
     update();
 }
 
-let mouseX = null;
-let mouseY = null;
-
 addSquareButton.addEventListener('click', Square.createSquare)
-
-addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-})
 
 const entity = new Entity();
 

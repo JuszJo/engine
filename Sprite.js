@@ -44,12 +44,9 @@ class Sprite extends Entity {
         this.sourceWidth = this.charactersFrameWidth / this.characterFramesX;
         this.sourceHeight = this.charactersFrameHeight / this.characterFramesY;
         
-        this.speed = new Vector(0, 0);
-        this.acceleration = new Vector(0, 0)
         this.degrees = 0;
         this.allowMovement = false;
         this.arrow = true;
-        this.MovementComponent = new Movement();
         this.event = new CustomEvent("entity_creation", {detail: this});
         dispatchEvent(this.event);
     }
@@ -59,30 +56,16 @@ class Sprite extends Entity {
 
         drawingSurface.translate(this.position.x, this.position.y);
 
-        // const angleOffset = this.degrees * Math.PI / 180
-
         drawingSurface.rotate(this.angle);
 
         drawingSurface.drawImage(
             this.image,
             this.sourceX, this.sourceY,
             this.sourceWidth, this.sourceHeight,
-            (-this.width / 2) * this.scale, (-this.height / 2) * this.scale,
+            this.position.x, this.position.y,
             this.width * this.scale, this.height * this.scale,
         );
 
         drawingSurface.restore();
     }
-
-    // update() {
-    //     this.applyMovement();
-
-    //     this.draw();
-
-    //     console.log(this.speed);
-
-    //     this.acceleration.mult(0);
-
-    //     this.speed.mult(0.9);
-    // }
 }
