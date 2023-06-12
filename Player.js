@@ -2,7 +2,7 @@ class Player extends Sprite {
     constructor(
         image, 
         width, height, 
-        position_x = 0, position_y =  0, 
+        position_x = 0, position_y = 0, 
         oneCharacterSheet = true, 
         totalCharactersX, totalCharactersY, 
         totalFramesX, totalFramesY, 

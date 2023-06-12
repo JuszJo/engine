@@ -20,15 +20,15 @@ class Sprite extends Entity {
         this.oneCharacterSheet = oneCharacterSheet;
         
         // character of choice
-        this.characterNumber = characterNumber | 1;
+        this.characterNumber = characterNumber || 1;
 
         // total number of characters in spritesheet
-        this.totalCharactersX = totalCharactersX | 1;
-        this.totalCharactersY = totalCharactersY | 1;
+        this.totalCharactersX = totalCharactersX || 1;
+        this.totalCharactersY = totalCharactersY || 1;
 
         // total frames on x and y axis
-        this.totalFramesX = totalFramesX | 1;
-        this.totalFramesY = totalFramesY | 1;
+        this.totalFramesX = totalFramesX || 1;
+        this.totalFramesY = totalFramesY || 1;
 
         // frames per character
         this.characterFramesX = totalFramesX / totalCharactersX;
@@ -38,8 +38,12 @@ class Sprite extends Entity {
         this.charactersFrameWidth = this.width / totalCharactersX;
         this.charactersFrameHeight = this.height / totalCharactersY;
 
-        this.sourceX = (characterNumber - 1) * this.charactersFrameWidth;
-        this.sourceY = 0;
+        this.sourceX = this.totalCharactersY == 1 ? ((this.characterNumber - 1) * this.charactersFrameWidth) : ((this.characterNumber - 1) % this.totalCharactersX) * this.charactersFrameWidth;
+        this.sourceY = this.totalCharactersY == 1 || this.characterNumber <= this.totalCharactersX ? 0 : (Math.floor((this.characterNumber - 1) / this.totalCharactersX)) * this.charactersFrameHeight;
+
+        // console.log(this.sourceX, Math.floor((this.characterNumber - 1) / this.totalCharactersX));
+        console.log(this.sourceX, this.sourceY);
+        // console.log(this.sourceX, Math.floor((this.characterNumber - 1) / this.totalCharactersX));
 
         this.sourceWidth = this.charactersFrameWidth / this.characterFramesX;
         this.sourceHeight = this.charactersFrameHeight / this.characterFramesY;
@@ -63,9 +67,13 @@ class Sprite extends Entity {
             this.sourceX, this.sourceY,
             this.sourceWidth, this.sourceHeight,
             this.position.x, this.position.y,
-            this.width * this.scale, this.height * this.scale,
+            this.sourceWidth * this.scale, this.sourceHeight * this.scale,
         );
 
         drawingSurface.restore();
+    }
+
+    update() {
+        this.draw();
     }
 }
