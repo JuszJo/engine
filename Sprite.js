@@ -34,12 +34,14 @@ class Sprite extends Entity {
         this.characterFramesX = totalFramesX / totalCharactersX;
         this.characterFramesY = totalFramesY / totalCharactersY;
 
-        // dimensions for individual character frames
+        // dimensions for individual characters frame
         this.charactersFrameWidth = this.width / totalCharactersX;
         this.charactersFrameHeight = this.height / totalCharactersY;
 
         this.sourceX = this.totalCharactersY == 1 ? ((this.characterNumber - 1) * this.charactersFrameWidth) : ((this.characterNumber - 1) % this.totalCharactersX) * this.charactersFrameWidth;
         this.sourceY = this.totalCharactersY == 1 || this.characterNumber <= this.totalCharactersX ? 0 : (Math.floor((this.characterNumber - 1) / this.totalCharactersX)) * this.charactersFrameHeight;
+
+        this.staticSourceX = this.sourceX;
 
         // console.log(this.sourceX, Math.floor((this.characterNumber - 1) / this.totalCharactersX));
         // console.log(this.sourceX, this.sourceY);
@@ -49,7 +51,8 @@ class Sprite extends Entity {
         this.sourceHeight = this.charactersFrameHeight / this.characterFramesY;
 
         this.animations = animations || null;
-        
+        this.framesElapsed = 0;
+        this.frameBuffer = 12;
         this.degrees = 0;
         this.allowMovement = false;
         this.arrow = true;
@@ -58,7 +61,21 @@ class Sprite extends Entity {
     }
 
     animate() {
-       
+        let fullFrame = this.staticSourceX + this.charactersFrameWidth;
+        if(this.animations && this.framesElapsed % this.frameBuffer == 0) {
+            // console.log(this.framesElapsed % this.frameBuffer);
+            this.sourceX += this.sourceWidth;
+            // for(let i = 0; i < this.animations.left.totalFrames; i++) {
+            //     // console.log(this.sourceX);
+            //     // console.log(this.sourceX);
+            //     this.sourceX += this.sourceWidth;
+            // }
+            if(this.sourceX == fullFrame) {
+                this.sourceX = this.staticSourceX;
+            }
+       }
+
+       ++this.framesElapsed;
     }
 
     draw() {
@@ -75,6 +92,8 @@ class Sprite extends Entity {
             this.position.x, this.position.y,
             this.sourceWidth * this.scale, this.sourceHeight * this.scale,
         );
+
+        // console.log(this.sourceX);
 
         drawingSurface.restore();
     }

@@ -34,7 +34,7 @@ class Human extends Sprite {
 
         this.applyMovement();
 
-        // this.animate();
+        this.animate();
 
         this.acceleration.mult(0);
 
