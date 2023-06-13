@@ -91,6 +91,8 @@ class Entity {
     }
 
     followObject(entity) {
+        plotVectors(this.speed, entity.speed);
+
         const newPosition = this.position.makeCopy();
 
         // const fakeObject = entity.position.makeCopy();
@@ -114,15 +116,25 @@ class Entity {
         desired.setMag(5)
 
         const steering = new Vector().subStatic(desired, this.speed);
-        
-        const angleBetween = Math.atan2(desired.y, desired.x);
-        // const angleBetween = Math.atan2(steering.y, steering.x);
-        
-        // steering.limit(0.01, 0.01);
 
-        this.angle = angleBetween;
+        // console.log(steering);
 
-        this.applyForce(steering);
+        // const angleBetween = getAngle(this.position, entity.position);
+
+        // console.log(angleBetween * 180 / Math.PI);
+        
+        // steering.limit(0.1, 0.1);
+
+        // const angleBetween = Math.atan2(desired.y, desired.x);
+        
+        // const check = Math.atan2(steering.y, steering.x);
+        
+        // console.log(check);
+
+        // this.angle = angleBetween;
+        // this.angle = check;
+
+        // this.applyForce(steering);
         
         // this.position.getAngle(entity.position);
 

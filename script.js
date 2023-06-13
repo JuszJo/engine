@@ -17,6 +17,91 @@ addEventListener('mousemove', e => {
     mouseY = e.clientY;
 })
 
+
+function connectPoints(x1, y1, x2, y2) {
+    drawingSurface.beginPath();
+    drawingSurface.moveTo(x2, y2);
+    drawingSurface.lineTo(x1, y1);
+    drawingSurface.stroke();
+}
+
+function getAngle(vec1, vec2) {
+    const vec1Mag = vec1.mag();
+    const vec2Mag = vec2.mag();
+    
+    const dotProduct = vec1.dot(vec2)
+    
+    const angleBetween = Math.acos((dotProduct / (vec1Mag * vec2Mag)))
+    
+    console.log(angleBetween);
+
+    return angleBetween;
+}
+
+// const factor = 20;
+
+// const vec1 = new Vector(3 * factor, -2 * factor);
+// const vec2 = new Vector(1 * factor, 7 * factor);
+
+// const vec1Mag = vec1.mag();
+// const vec2Mag = vec2.mag();
+
+// const dotProduct = vec1.dot(vec2)
+
+// const angleBetween = Math.acos((dotProduct / (vec1Mag * vec2Mag)))
+
+// vec1.normalize();
+// vec2.normalize();
+
+// vec1.mult(200);
+// vec2.mult(200);
+
+// console.log(angleBetween * 180 / Math.PI);
+// console.log(vec1, vec2);
+
+function plotVectors(vec1, vec2) {
+    // console.log(vec1, vec2);
+
+    vec1 = vec1.makeCopy();
+    vec2 = vec2.makeCopy();
+
+    vec1.mult(10);
+    vec2.mult(10);
+
+    drawingSurface.save()
+
+    drawingSurface.translate(canvasWidth / 2, canvasHeight / 2);
+
+    drawingSurface.beginPath();
+    drawingSurface.moveTo(vec1.x, vec1.y);
+    drawingSurface.lineTo(0, 0);
+    drawingSurface.stroke();
+    drawingSurface.closePath();
+
+    drawingSurface.beginPath();
+    drawingSurface.moveTo(vec2.x, vec2.y);
+    drawingSurface.lineTo(0, 0);
+    drawingSurface.stroke();
+    drawingSurface.closePath();
+
+    drawingSurface.restore();
+}
+
+// plotVectors(vec1, vec2)
+
+// console.log(angleBetween * 180 / Math.PI);
+
+// connectPoints(vec1.x, vec1.y, vec2.x, vec2.y)
+
+
+
+
+
+
+
+
+
+
 // const image = new Image();
 
 // image.src = './images/bonus1_full.png';
@@ -94,6 +179,9 @@ function update() {
     clearScreen();
 
     draw();
+
+    // connectPoints(vec1.x, vec1.y, vec2.x, vec2.y)
+    // plotVectors(vec1, vec2)
 
     requestAnimationFrame(update);
 }
