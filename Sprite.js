@@ -1,5 +1,5 @@
 class Sprite extends Entity {
-    constructor(image, width, height, position_x = 0, position_y =  0, oneCharacterSheet = true, totalCharactersX, totalCharactersY, totalFramesX, totalFramesY, characterNumber, scale = 1, animations) {
+    constructor(image, width, height, position_x = 0, position_y =  0, oneCharacterSheet = true, totalCharactersX, totalCharactersY, totalFramesX, totalFramesY, characterNumber, scale = 1, animations, startingFrame) {
         super(width, height, position_x, position_y, true)
         // sprite image
         this.image = image;
@@ -51,6 +51,8 @@ class Sprite extends Entity {
         this.sourceHeight = this.charactersFrameHeight / this.characterFramesY;
 
         this.animations = animations || null;
+        this.startingFrame = startingFrame || 1;
+        this.sourceX = this.sourceX + (this.startingFrame - 1) * this.sourceWidth
         this.framesElapsed = 0;
         this.frameBuffer = 12;
         this.degrees = 0;

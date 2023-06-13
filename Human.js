@@ -8,7 +8,8 @@ class Human extends Sprite {
         totalFramesX, totalFramesY, 
         characterNumber, 
         scale = 1,
-        animations
+        animations,
+        startingFrame
     ) {
         super(
             image, 
@@ -19,7 +20,8 @@ class Human extends Sprite {
             totalFramesX, totalFramesY, 
             characterNumber, 
             scale,
-            animations
+            animations,
+            startingFrame
         )
 
         this.allowMovement = true;
