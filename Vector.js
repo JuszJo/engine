@@ -49,6 +49,11 @@ class Vector {
         return Math.sqrt((Math.pow(this.x, 2) + (Math.pow(this.y, 2))));
     };
 
+    setMag(mag) {
+        this.normalize();
+        this.mult(mag);
+    }
+
     normalize() {
         var m = this.mag();
         if(m != 0) {

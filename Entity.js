@@ -111,15 +111,25 @@ class Entity {
 
         const desired = new Vector().subStatic(entity.position, this.position);
 
-        desired.normalize();
+        desired.setMag(5)
 
         const angleBetween = Math.atan2(desired.y, desired.x);
-        
-        // console.log(angleBetween);
 
+        const steering = new Vector().subStatic(desired, this.speed)
+
+        // steering.mult(1.1);
+        
+        // steering.mult();
+        
         this.angle = angleBetween;
 
-        this.applyForce(desired)
+        // console.log(steering);
+
+        this.applyForce(steering);
+
+        // this.angle = angleBetween;
+
+        // this.applyForce(desired)
 
 
 
