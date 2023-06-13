@@ -20,7 +20,7 @@ class Player extends Sprite {
             scale
         )
 
-        this.degrees = 90;
+        this.degrees = 0;
         this.maxSpeed = 10;
         this.allowMovement = true;
     }

@@ -31,7 +31,7 @@ class Police extends Sprite {
 
         const angleOffset = this.degrees * Math.PI / 180
 
-        drawingSurface.rotate(this.angle + angleOffset + 0.03);
+        drawingSurface.rotate(this.angle + angleOffset);
 
         drawingSurface.drawImage(
             this.image,

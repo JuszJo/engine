@@ -124,12 +124,12 @@ class Movement {
                     // else if(controls.right) this.acceleration.x = 0.5;
                     // else this.acceleration.x = 0
 
-                    // console.log(Math.cos(this.angle), Math.sin(this.angle));
+                    // console.log(Math.sin(this.angle), -Math.cos(this.angle));
                     // console.log(this.angle * 180 / Math.PI);
                     // console.log(Math.cos(this.angle), Math.sin(this.angle));
                     
-                    if(controls.up) this.acceleration.add(new Vector(Math.cos(this.angle), Math.sin(this.angle)));
-                    else if(controls.down) this.acceleration.add(new Vector(-Math.cos(this.angle), -Math.sin(this.angle)));
+                    if(controls.up) this.acceleration.add(new Vector(Math.sin(this.angle), -Math.cos(this.angle)));
+                    else if(controls.down) this.acceleration.add(new Vector(-Math.sin(this.angle), Math.cos(this.angle)));
                     else this.speed.mult(0);
                     
                     if(controls.left) this.angle -= 0.04;

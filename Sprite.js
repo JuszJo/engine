@@ -67,11 +67,7 @@ class Sprite extends Entity {
         if(this.animations && this.framesElapsed % this.frameBuffer == 0) {
             // console.log(this.framesElapsed % this.frameBuffer);
             this.sourceX += this.sourceWidth;
-            // for(let i = 0; i < this.animations.left.totalFrames; i++) {
-            //     // console.log(this.sourceX);
-            //     // console.log(this.sourceX);
-            //     this.sourceX += this.sourceWidth;
-            // }
+
             if(this.sourceX == fullFrame) {
                 this.sourceX = this.staticSourceX;
             }

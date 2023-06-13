@@ -103,19 +103,41 @@ class Entity {
         // this.showPoints && this.connectPoints(fakeObject.x, entity.position.y, newPosition.x, newPosition.y);
         this.showPoints && this.connectPoints(entity.position.x, entity.position.y, newPosition.x, newPosition.y);
 
-        const newObject = entity.position.makeCopy();
+        // const entityVelocity = entity.velocity.makeCopy();
 
-        newObject.sub(newPosition);
+        // entityVelocity
+
+        // const newObject = entity.position.makeCopy();
+
+        const desired = new Vector().subStatic(entity.position, this.position);
+
+        desired.normalize();
+
+        const angleBetween = Math.atan2(desired.y, desired.x);
         
-        newObject.normalize();
-        
-        newObject.mult(1);
-        
-        const angleBetween = Math.atan2(newObject.y, newObject.x);
+        // console.log(angleBetween);
 
         this.angle = angleBetween;
+
+        this.applyForce(desired)
+
+
+
+
+
+        // const newObject = entity.position.makeCopy();
+
+        // newObject.sub(newPosition);
         
-        this.applyForce(newObject);
+        // newObject.normalize();
+        
+        // newObject.mult(1);
+        
+        // const angleBetween = Math.atan2(newObject.y, newObject.x);
+
+        // this.angle = angleBetween;
+        
+        // this.applyForce(newObject);
     }
 
     // direction() {
