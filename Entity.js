@@ -115,7 +115,7 @@ class Entity {
 
         desired.setMag(5)
 
-        const steering = new Vector().subStatic(desired, this.speed);
+        // const steering = new Vector().subStatic(desired, this.speed);
 
         // console.log(steering);
 
