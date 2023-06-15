@@ -15,7 +15,7 @@ class Entity {
         this.height = height;
         this.position = new Vector(position_x, position_y);
         this.speed = new Vector(0, 0);
-        this.maxSpeed = 5;
+        this.maxSpeed = 0;
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
@@ -42,6 +42,8 @@ class Entity {
         this.MovementComponent.initMovement.apply(this);
 
         this.speed.add(this.acceleration);
+
+        // console.log(this, this.speed);
         
         this.speed.limit(this.maxSpeed, this.maxSpeed);
 
@@ -113,7 +115,7 @@ class Entity {
 
         const desired = new Vector().subStatic(entity.position, this.position);
 
-        desired.setMag(5)
+        desired.setMag(this.maxSpeed)
 
         const steering = new Vector().subStatic(desired, this.speed);
 

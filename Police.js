@@ -47,6 +47,8 @@ class Police extends Sprite {
     update() {
         this.applyMovement();
 
+        // console.log(this.speed);
+
         // this.speed.x += 0.1;
 
         this.draw();

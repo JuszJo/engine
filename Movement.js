@@ -130,7 +130,7 @@ class Movement {
                     
                     if(controls.up) this.acceleration.add(new Vector(Math.sin(this.angle), -Math.cos(this.angle)));
                     else if(controls.down) this.acceleration.add(new Vector(-Math.sin(this.angle), Math.cos(this.angle)));
-                    else this.speed.mult(0);
+                    else;
                     
                     if(controls.left) this.angle -= 0.04;
                     if(controls.right) this.angle += 0.04;
