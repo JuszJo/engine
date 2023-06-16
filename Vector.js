@@ -61,20 +61,24 @@ class Vector {
         };
     };
 
-    limit(nx, ny) {
-        if(this.y >= ny) {
-            this.y = ny;
-        }
-        if(this.x >= nx) {
-            this.x = nx;
-        }
-        if(this.y < 0 && Math.abs(this.y) >= ny) {
-            this.y = -ny;
-        }
-        if(this.x < 0 && Math.abs(this.x) >= nx) {
-            this.x = -nx;
-        }
-    };
+    limit(lim) {
+        lim > this.mag() ? null : this.setMag(lim)
+    }
+
+    // limit(nx, ny) {
+    //     if(this.y >= ny) {
+    //         this.y = ny;
+    //     }
+    //     if(this.x >= nx) {
+    //         this.x = nx;
+    //     }
+    //     if(this.y < 0 && Math.abs(this.y) >= ny) {
+    //         this.y = -ny;
+    //     }
+    //     if(this.x < 0 && Math.abs(this.x) >= nx) {
+    //         this.x = -nx;
+    //     }
+    // };
 
     makeCopy() {
         var copy = new Vector(this.x, this.y);

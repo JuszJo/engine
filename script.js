@@ -168,6 +168,8 @@ function draw() {
     
     police.followObject(player);
 
+    // police.followMouse()
+
     // police2.followObject(circle);
 
 

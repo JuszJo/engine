@@ -21,8 +21,8 @@ class Player extends Sprite {
         )
 
         this.degrees = 0;
-        this.maxSpeed = 10;
-        this.allowMovement = true;
+        this.maxSpeed = 7;
+        // this.allowMovement = true;
     }
 
     boundingBox() {
@@ -58,6 +58,6 @@ class Player extends Sprite {
         
         this.acceleration.mult(0);
         
-        this.speed.mult(0.9);
+        // this.speed.mult(0.9);
     }
 }

@@ -45,7 +45,10 @@ class Entity {
 
         // console.log(this, this.speed);
         
-        this.speed.limit(this.maxSpeed, this.maxSpeed);
+        // this.speed.limit(this.maxSpeed, this.maxSpeed);
+        this.speed.limit(this.maxSpeed);
+
+        // console.log(this.speed);
 
         // this.speed.x = Math.floor(this.speed.x);
         // this.speed.y = Math.floor(this.speed.y);
@@ -79,17 +82,32 @@ class Entity {
 
         this.connectPoints(this.mouseVector.x, this.mouseVector.y, newPosition.x, newPosition.y);
 
-        this.mouseVector.sub(newPosition);
-        
-        this.mouseVector.normalize();
-        
-        this.mouseVector.mult(2);
-        
-        const angleBetween = Math.atan2(this.mouseVector.y, this.mouseVector.x);
+        const desired = new Vector().subStatic(this.mouseVector, this.position);
 
-        this.angle = angleBetween;
+        desired.setMag(this.maxSpeed)
+
+        const steering = new Vector().subStatic(desired, this.speed);
         
-        this.applyForce(this.mouseVector);
+        // steering.limit(0.3, 0.3);
+        steering.limit(0.3);
+
+        const angleBetween = Math.atan2(desired.y, desired.x);
+    
+        this.angle = angleBetween;
+
+        this.applyForce(steering);
+
+        // this.mouseVector.sub(newPosition);
+        
+        // this.mouseVector.normalize();
+        
+        // this.mouseVector.mult(2);
+        
+        // const angleBetween = Math.atan2(this.mouseVector.y, this.mouseVector.x);
+
+        // this.angle = angleBetween;
+        
+        // this.applyForce(this.mouseVector);
     }
 
     followObject(entity) {
@@ -125,7 +143,8 @@ class Entity {
 
         // console.log(angleBetween * 180 / Math.PI);
         
-        steering.limit(0.1, 0.1);
+        // steering.limit(0.2, 0.2);
+        steering.limit(0.2);
 
         const angleBetween = Math.atan2(desired.y, desired.x);
         
@@ -133,7 +152,10 @@ class Entity {
         
         // console.log(check);
 
+        // console.log(this.speed);
+
         this.angle = angleBetween;
+        
         // this.angle = check;
 
         this.applyForce(steering);
