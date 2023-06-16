@@ -1,4 +1,4 @@
-class Player extends Sprite {
+class Player extends Car {
     constructor(
         image, 
         width, height, 
@@ -25,39 +25,43 @@ class Player extends Sprite {
         // this.allowMovement = true;
     }
 
+    controls() {
+        
+    }
+
     boundingBox() {
         drawingSurface.strokeRect(this.position.x - this.height * this.scale / 2, this.position.y - this.width * this.scale / 2, this.height * this.scale, this.width * this.scale);
     }
 
-    draw() {
-        drawingSurface.save();
+    // draw() {
+    //     drawingSurface.save();
 
-        drawingSurface.translate(this.position.x, this.position.y);
+    //     drawingSurface.translate(this.position.x, this.position.y);
 
-        const angleOffset = this.degrees * Math.PI / 180
+    //     const angleOffset = this.degrees * Math.PI / 180
 
-        drawingSurface.rotate(this.angle + angleOffset);
+    //     drawingSurface.rotate(this.angle + angleOffset);
 
-        drawingSurface.drawImage(
-            this.image,
-            this.sourceX, this.sourceY,
-            this.sourceWidth, this.sourceHeight,
-            (-this.width / 2) * this.scale, (-this.height / 2) * this.scale,
-            this.width * this.scale, this.height * this.scale,
-        );
+    //     drawingSurface.drawImage(
+    //         this.image,
+    //         this.sourceX, this.sourceY,
+    //         this.sourceWidth, this.sourceHeight,
+    //         (-this.width / 2) * this.scale, (-this.height / 2) * this.scale,
+    //         this.width * this.scale, this.height * this.scale,
+    //     );
 
-        drawingSurface.restore();
+    //     drawingSurface.restore();
         
-        // this.boundingBox();
-    }
+    //     // this.boundingBox();
+    // }
 
-    update() {
-        this.applyMovement();
+    // update() {
+    //     this.applyMovement();
         
-        this.draw();
+    //     this.draw();
         
-        this.acceleration.mult(0);
+    //     this.acceleration.mult(0);
         
-        // this.speed.mult(0.9);
-    }
+    //     // this.speed.mult(0.9);
+    // }
 }

@@ -1,4 +1,4 @@
-class Police extends Sprite {
+class Police extends Car {
     constructor(
         image, 
         width, height, 
@@ -24,37 +24,37 @@ class Police extends Sprite {
         this.maxSpeed = 7;
     }
 
-    draw() {
-        drawingSurface.save();
+    // draw() {
+    //     drawingSurface.save();
 
-        drawingSurface.translate(this.position.x, this.position.y);
+    //     drawingSurface.translate(this.position.x, this.position.y);
 
-        const angleOffset = this.degrees * Math.PI / 180
+    //     const angleOffset = this.degrees * Math.PI / 180
 
-        drawingSurface.rotate(this.angle + angleOffset);
+    //     drawingSurface.rotate(this.angle + angleOffset);
 
-        drawingSurface.drawImage(
-            this.image,
-            this.sourceX, this.sourceY,
-            this.sourceWidth, this.sourceHeight,
-            (-this.width / 2) * this.scale, (-this.height / 2) * this.scale,
-            this.width * this.scale, this.height * this.scale,
-        );
+    //     drawingSurface.drawImage(
+    //         this.image,
+    //         this.sourceX, this.sourceY,
+    //         this.sourceWidth, this.sourceHeight,
+    //         (-this.width / 2) * this.scale, (-this.height / 2) * this.scale,
+    //         this.width * this.scale, this.height * this.scale,
+    //     );
 
-        drawingSurface.restore();
-    }
+    //     drawingSurface.restore();
+    // }
     
-    update() {
-        this.applyMovement();
+    // update() {
+    //     this.applyMovement();
 
-        // console.log(this.speed);
+    //     // console.log(this.speed);
 
-        // this.speed.x += 0.1;
+    //     // this.speed.x += 0.1;
 
-        this.draw();
+    //     this.draw();
 
-        this.acceleration.mult(0);
+    //     this.acceleration.mult(0);
 
-        // this.speed.mult(0.9);
-    }
+    //     // this.speed.mult(0.9);
+    // }
 }
