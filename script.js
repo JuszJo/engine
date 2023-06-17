@@ -137,9 +137,11 @@ let tester = null;
 let player = null;
 let police = null;
 
+const scale = 0.25;
+
 policeImage.onload = () => {
-    police = new Police(policeImage, policeImage.width, policeImage.height, canvasWidth / 2, canvasHeight / 2, true, 1, 1, 1, 1, 1, 0.5);
-    player = new Player(driverImage, driverImage.width, driverImage.height, 0 + driverImage.width * 0.5, canvasHeight / 2, true, 1, 1, 1, 1, 1, 0.5);
+    police = new Police(policeImage, policeImage.width, policeImage.height, canvasWidth / 2, canvasHeight / 2, true, 1, 1, 1, 1, 1, scale);
+    player = new Player(driverImage, driverImage.width, driverImage.height, 0 + driverImage.width * 0.5, canvasHeight / 2, true, 1, 1, 1, 1, 1, scale);
     tester = new Human(test, test.width, test.height, 0, 0, false, 4, 2, 12, 8, characterNumber, 1, humanAnimations, 2)
 
     // police2 = new Sprite(policeImage, 200, 100, true, 1, 1, 1, 1, 1, 0.5);

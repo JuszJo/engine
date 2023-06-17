@@ -39,7 +39,7 @@ class Entity {
     }
 
     applyMovement() {
-        this.MovementComponent.initMovement.apply(this);
+        // this.MovementComponent.initMovement.apply(this);
 
         this.speed.add(this.acceleration);
 
