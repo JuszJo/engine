@@ -84,7 +84,7 @@ class Entity {
 
         const desired = new Vector().subStatic(this.mouseVector, this.position);
 
-        desired.setMag(this.maxSpeed)
+        desired.setMag(this.maxSpeed);
 
         const steering = new Vector().subStatic(desired, this.speed);
         

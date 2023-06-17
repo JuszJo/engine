@@ -46,7 +46,7 @@ class Car extends Sprite {
         
         this.draw();
         
-        this.acceleration.mult(0.1);
+        this.acceleration.mult(0);
         
         // this.speed.mult(0.9);
     }
