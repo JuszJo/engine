@@ -1,2 +1,2 @@
 # engine
-Javascript Game Engine
+Javascript Game Engine for simulations
