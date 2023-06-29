@@ -25,21 +25,21 @@ class Human extends Sprite {
         )
 
         this.allowMovement = true;
+        this.maxSpeed = 3;
         this.arrow = false;
     }
-
     
     update() {
         // console.log(this.speed);
 
         this.draw();
 
+        this.MovementComponent.initMovement.apply(this, null)
+
         this.applyMovement();
 
         this.animate();
 
         this.acceleration.mult(0);
-
-        
     }
 }

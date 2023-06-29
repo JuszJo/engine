@@ -27,27 +27,27 @@ class Player extends Car {
     }
 
     allowControls() {
-        // if(controls.up) this.acceleration.add(new Vector(Math.sin(this.angle), -Math.cos(this.angle)));
-        // if(controls.down) this.acceleration.add(new Vector(-Math.sin(this.angle), Math.cos(this.angle)));
-        // // else {this.acceleration.mult(0)}
+        if(controls.up) this.acceleration.add(new Vector(Math.sin(this.angle), -Math.cos(this.angle)));
+        if(controls.down) this.acceleration.add(new Vector(-Math.sin(this.angle), Math.cos(this.angle)));
+        // else {this.acceleration.mult(0)}
 
-        // if(controls.left) this.angle -= 0.04
-        // if(controls.right) this.angle += 0.04
+        if(controls.left) this.angle -= 0.04
+        if(controls.right) this.angle += 0.04
 
         // if(controls.up) this.acceleration.add(new Vector(-0.1, -0.1));
         // if(controls.down) this.acceleration.add(new Vector(0.1, 0.1));
         // if(controls.left) this.angle -= 0.04;
         // if(controls.right) this.angle += 0.04;
-        if(controls.up) this.acceleration.add(new Vector(0.3, 0.3));
-        if(controls.down) this.acceleration.add(new Vector(-0.3, -0.3));
-        if(controls.left) this.angle -= 0.04;
-        if(controls.right) this.angle += 0.04;
+        // if(controls.up) this.acceleration.add(new Vector(0.3, 0.3));
+        // if(controls.down) this.acceleration.add(new Vector(-0.3, -0.3));
+        // if(controls.left) this.angle -= 0.04;
+        // if(controls.right) this.angle += 0.04;
 
-        const x_projection = Math.sin(this.angle);
-        const y_projection = Math.cos(this.angle);
+        // const x_projection = Math.sin(this.angle);
+        // const y_projection = Math.cos(this.angle);
 
-        this.acceleration.x *= x_projection;
-        this.acceleration.y *= -y_projection;
+        // this.acceleration.x *= x_projection;
+        // this.acceleration.y *= -y_projection;
 
         // console.log(x_projection, y_projection);
 
