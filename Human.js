@@ -23,10 +23,25 @@ class Human extends Sprite {
             animations,
             startingFrame
         )
-
+        
+        this.camera = new Camera(500, 500)
         this.allowMovement = true;
-        this.maxSpeed = 3;
+        this.maxSpeed = 5;
         this.arrow = false;
+    }
+
+    draw() {
+        drawingSurface.save();
+
+        drawingSurface.drawImage(
+            this.image,
+            this.sourceX, this.sourceY,
+            this.sourceWidth, this.sourceHeight,
+            this.position.x, this.position.y,
+            this.sourceWidth * this.scale, this.sourceHeight * this.scale,
+        );
+
+        drawingSurface.restore();
     }
     
     update() {
@@ -34,8 +49,12 @@ class Human extends Sprite {
 
         this.draw();
 
-        this.MovementComponent.initMovement.apply(this, null)
+        this.camera.showCamera(this.position.x, this.position.y)
 
+        console.log(this.speed.x, this.speed.y);
+        
+        this.MovementComponent.initMovement.apply(this, null)
+        
         this.applyMovement();
 
         this.animate();

@@ -138,13 +138,21 @@ class Movement {
                     break;
     
                 case false:
-                    if(controlsWASD.up) this.acceleration.y = -0.5;
-                    else if(controlsWASD.down) this.acceleration.y = 0.5;
+                    if(controlsWASD.up) this.speed.y = -this.maxSpeed;
+                    else if(controlsWASD.down) this.speed.y = this.maxSpeed;
                     else this.speed.y = 0
                     
-                    if(controlsWASD.left) this.acceleration.x = -0.5;
-                    else if(controlsWASD.right) this.acceleration.x = 0.5;
+                    if(controlsWASD.left) this.speed.x = -this.maxSpeed;
+                    else if(controlsWASD.right) this.speed.x = this.maxSpeed;
                     else this.speed.x = 0
+
+                    // if(controlsWASD.up) this.acceleration.y = -0.5;
+                    // else if(controlsWASD.down) this.acceleration.y = 0.5;
+                    // else this.speed.y = 0
+                    
+                    // if(controlsWASD.left) this.acceleration.x = -0.5;
+                    // else if(controlsWASD.right) this.acceleration.x = 0.5;
+                    // else this.speed.x = 0
                     
                     // if(controlsWASD.up) this.acceleration.y = -0.5;
                     // else if(controlsWASD.down) this.acceleration.y = 0.5;

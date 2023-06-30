@@ -19,6 +19,7 @@ class Entity {
         this.acceleration = new Vector(0, 0)
         this.arrow = arrow;
         this.MovementComponent = new Movement();
+        this.camera = new Camera(0, 0)
         this.angle = 0;
         this.allowMovement = false;
         this.showPoints = true;
