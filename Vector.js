@@ -62,7 +62,6 @@ class Vector {
     };
 
     limit(lim) {
-        console.log(lim);
         lim > this.mag() ? null : this.setMag(lim)
     }
 

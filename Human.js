@@ -45,13 +45,9 @@ class Human extends Sprite {
     }
     
     update() {
-        // console.log(this.speed);
-
         this.draw();
 
-        this.camera.showCamera(this.position.x, this.position.y)
-
-        console.log(this.speed.x, this.speed.y);
+        this.camera.showCamera(this.position.x, this.position.y, this.sourceWidth * this.scale, this.sourceHeight * this.scale)
         
         this.MovementComponent.initMovement.apply(this, null)
         
